@@ -24,9 +24,9 @@ curl --request {{$endpoint->httpMethods[0]}} \
 @endforeach
 @elseif(count($endpoint->cleanBodyParameters))
 @if ($endpoint->headers['Content-Type'] == 'application/x-www-form-urlencoded')
-    --data "{!! http_build_query($endpoint->cleanBodyParameters, '', '&') !!}"
+    --data '{!! http_build_query($endpoint->cleanBodyParameters, '', '&') !!}'
 @else
-    --data "{!! addslashes(json_encode($endpoint->cleanBodyParameters, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT)) !!}"
+    --data '{!! json_encode($endpoint->cleanBodyParameters, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}'
 @endif
 @endif
 
